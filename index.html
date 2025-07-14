@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоматичний парсер товарів</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Автопарсер товарів</h1>
+            <p>Просто вставте посилання - ми проаналізуємо все автоматично</p>
+        </div>
+        
+        <div class="form-section">
+            <div class="input-group">
+                <label for="urlInput">🔗 Посилання на сторінку товару:</label>
+                <input type="url" 
+                       id="urlInput" 
+                       class="url-input" 
+                       placeholder="https://ti.ua/product/..."
+                       required>
+            </div>
+            
+            <div class="input-group">
+                <label for="categorySelect">📱 Категорія товару:</label>
+                <select id="categorySelect" class="category-select">
+                    <option value="">Авто-визначення (рекомендовано)</option>
+                    <option value="планшети">📱 Планшети</option>
+                    <option value="смартфони">📞 Смартфони</option>
+                    <option value="ноутбуки">💻 Ноутбуки</option>
+                    <option value="телевізори">📺 Телевізори</option>
+                    <option value="навушники">🎧 Навушники</option>
+                </select>
+            </div>
+            
+            <button onclick="analyzeUrl()" class="analyze-btn" id="analyzeBtn">
+                🔍 Аналізувати сторінку
+            </button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Завантажуємо та аналізуємо сторінку...</p>
+        </div>
+        
+        <div class="results" id="results"></div>
+    </div>
+
+    <!-- JavaScript файли -->
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="analyzer.js"></script>
+    <script src="ui.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
