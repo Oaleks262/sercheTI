@@ -1,0 +1,30 @@
+{
+  "name": "serche-ti-analyzer",
+  "version": "1.0.0",
+  "description": "Інструмент для аналізу сторінок товарів - перевіряє фотографії, характеристики та описи",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "product-analysis",
+    "web-scraping",
+    "specifications",
+    "analyzer",
+    "ukraine"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oaleks262/sercheTI.git"
+  },
+  "homepage": "https://github.com/Oaleks262/sercheTI#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}
