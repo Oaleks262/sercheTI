@@ -78,6 +78,13 @@ async function analyzeUrl() {
         return;
     }
     
+    // Валідація категорії
+    if (!selectedCategory) {
+        showNotification('Будь ласка, оберіть категорію товару', 'warning');
+        categorySelect.focus();
+        return;
+    }
+    
     // Зберігаємо URL для експорту
     currentUrl = url;
     
@@ -91,24 +98,18 @@ async function analyzeUrl() {
         showNotification('Завантажуємо сторінку...', 'info', 2000);
         const htmlContent = await fetchPageContent(url);
         
-        // Визначаємо категорію
-        const detectedCategory = selectedCategory || detectCategory(htmlContent);
-        log(`Використовуємо категорію: ${detectedCategory}`, 'info');
-        
-        // Оновлюємо селект категорії, якщо вона була визначена автоматично
-        if (!selectedCategory && categorySelect) {
-            categorySelect.value = detectedCategory;
-        }
+        // Використовуємо обрану категорію
+        log(`Використовуємо категорію: ${selectedCategory}`, 'info');
         
         // Аналізуємо сторінку
         showNotification('Аналізуємо контент...', 'info', 2000);
-        const analysis = await analyzePage(htmlContent, detectedCategory);
+        const analysis = await analyzePage(htmlContent, selectedCategory);
         
         // Зберігаємо результати
         currentAnalysis = analysis;
         
         // Показуємо результати
-        displayResults(analysis, detectedCategory);
+        displayResults(analysis, selectedCategory);
         
         // Показуємо успішне повідомлення
         showNotification('Аналіз завершено успішно!', 'success');
@@ -314,7 +315,6 @@ window.ParserAPI = {
     // Утилітарні функції
     utils: {
         isValidUrl,
-        detectCategory,
         formatNumber,
         log
     }

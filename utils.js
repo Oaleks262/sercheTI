@@ -59,27 +59,6 @@ async function fetchPageContent(url) {
     throw new Error('Не вдалося завантажити сторінку через жоден з проксі серверів');
 }
 
-/**
- * Автоматично визначає категорію товару на основі контенту
- * @param {string} html - HTML контент сторінки
- * @returns {string} - визначена категорія
- */
-function detectCategory(html) {
-    const text = html.toLowerCase();
-    
-    // Проходимо по всіх категоріях і шукаємо ключові слова
-    for (const [category, keywords] of Object.entries(CATEGORY_KEYWORDS)) {
-        for (const keyword of keywords) {
-            if (text.includes(keyword.toLowerCase())) {
-                console.log(`Визначено категорію: ${category} (ключове слово: ${keyword})`);
-                return category;
-            }
-        }
-    }
-    
-    console.log('Категорію не вдалося визначити, використовуємо планшети за замовчуванням');
-    return 'планшети'; // За замовчуванням
-}
 
 /**
  * Очищає текст від HTML тегів та зайвих пробілів
